@@ -1,140 +1,91 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-          target="_blank"
-          rel="noopener"
-          >babel</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          rel="noopener"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex"
-          target="_blank"
-          rel="noopener"
-          >vuex</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          rel="noopener"
-          >eslint</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
-          target="_blank"
-          rel="noopener"
-          >typescript</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
-        >
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
-        >
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-          rel="noopener"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+    <TestChart></TestChart>
+    <h1>{{ props.msg }}</h1>
+    <h2 @click="() => log(random(true))">
+      {{ message }}
+    </h2>
+    <button :style="{ width: '100px' }" @click="state.count++">
+      {{ state.count }}
+    </button>
+    <component :is="random(true) > 0.5 ? TestChart1 : TestChart2"></component>
+    <div class="hello-slot">
+      <slot></slot>
+      <slot name="h1"></slot>
+      {{ $slots.h1 }}
+    </div>
+    <div class="hello-show" v-show-log></div>
   </div>
 </template>
-
 <script lang="ts">
-import { defineComponent } from "vue";
+window.addEventListener("scroll", debounce(console.log, 500));
+</script>
+<script lang="ts" setup>
+import {
+  h,
+  defineEmits,
+  defineProps,
+  defineExpose,
+  onMounted,
+  reactive,
+  Directive,
+  withDefaults,
+} from "vue";
+import { debounce, random } from "lodash-es";
+import TestChart1 from "./TestChart.vue";
+const TestChart2 = h("h1", ["TestChart2"]);
 
-export default defineComponent({
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+const props = withDefaults(defineProps<{ msg: string }>(), {
+  msg: "这是默认的message",
 });
+const emits = defineEmits<{ (e: "hello-world", ...args: unknown[]): void }>();
+
+console.log("vue setup");
+
+const message = "world";
+
+function log(...args: unknown[]) {
+  console.log(...args);
+  emits("hello-world", ...args);
+}
+
+const state = reactive({ count: 0 });
+
+/**
+ * 自定义指令
+ */
+const vShowLog: Directive = {
+  beforeMount(el) {
+    const observer = new IntersectionObserver(
+      (entities) => {
+        for (const entity of entities) {
+          if (entity.intersectionRatio > 0.5) {
+            console.log("元素：", entity.target, "曝光了");
+          }
+        }
+      },
+      { threshold: [0, 0.5, 1] }
+    );
+    observer.observe(el);
+  },
+};
+
+onMounted(() => {
+  // debugger;
+});
+
+/**
+ * 组件对外暴漏的内容
+ */
+defineExpose({ state });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.hello {
+  &-show {
+    height: 1000px;
+    background-color: beige;
+  }
 }
 </style>
