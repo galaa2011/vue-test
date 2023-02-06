@@ -18,7 +18,10 @@
   </div>
 </template>
 <script lang="ts">
+import { debounce } from "lodash-es";
+
 window.addEventListener("scroll", debounce(console.log, 500));
+export default {};
 </script>
 <script lang="ts" setup>
 import {
@@ -31,10 +34,13 @@ import {
   Directive,
   withDefaults,
 } from "vue";
-import { debounce, random } from "lodash-es";
+import { random } from "lodash-es";
+import useTest from "@/hooks/useTest";
 import TestChart1 from "./TestChart.vue";
-const TestChart2 = h("h1", ["TestChart2"]);
 
+const test = useTest();
+
+const TestChart2 = h("h1", ["TestChart2"]);
 const props = withDefaults(defineProps<{ msg: string }>(), {
   msg: "这是默认的message",
 });
