@@ -22,6 +22,29 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "order" */ "../views/TestOrder.vue"),
   },
+  {
+    path: "/rxjs",
+    name: "rxjs",
+    component: () => import(/* webpackChunkName: "rxjs" */ "../views/RxJS.vue"),
+  },
+  {
+    path: "/lottie",
+    name: "lottie",
+    component: () =>
+      import(/* webpackChunkName: "lottie" */ "../views/LottieWeb.vue"),
+  },
+  {
+    path: "/message",
+    name: "message",
+    component: () =>
+      import(/* webpackChunkName: "message" */ "../views/PostMessage.vue"),
+  },
+  {
+    path: "/text",
+    name: "text",
+    component: () =>
+      import(/* webpackChunkName: "text" */ "../views/AutoText.vue"),
+  },
 ];
 
 const router = createRouter({
