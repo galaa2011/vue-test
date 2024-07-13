@@ -45,6 +45,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "text" */ "../views/AutoText.vue"),
   },
+  {
+    path: "/abort",
+    name: "abort",
+    component: () =>
+      import(/* webpackChunkName: "abort" */ "../views/AbortSignal.vue"),
+  },
 ];
 
 const router = createRouter({

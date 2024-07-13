@@ -1,9 +1,14 @@
 <template>
-  <!-- <nav>
+  <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/order">Order</router-link>
-  </nav> -->
+    <router-link to="/order">Order</router-link> |
+    <router-link to="/rxjs">Rxjs</router-link> |
+    <router-link to="/lottie">Lottie</router-link> |
+    <router-link to="/message">PostMessage</router-link> |
+    <router-link to="/text">AutoText</router-link> |
+    <router-link to="/abort">AbortSignal</router-link>
+  </nav>
   <router-view />
 </template>
 
