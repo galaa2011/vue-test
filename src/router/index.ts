@@ -45,6 +45,23 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "text" */ "../views/AutoText.vue"),
   },
+  {
+    path: "/file",
+    name: "file",
+    component: () =>
+      import(/* webpackChunkName: "file" */ "../views/FileReader.vue"),
+  },
+  {
+    path: "/grid",
+    name: "grid",
+    component: () =>
+      import(/* webpackChunkName: "grid" */ "../views/GridView.vue"),
+  },
+  {
+    path: "/lcp",
+    name: "lcp",
+    component: () => import(/* webpackChunkName: "lcp" */ "../views/LCP.vue"),
+  },
 ];
 
 const router = createRouter({

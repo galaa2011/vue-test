@@ -1951,6 +1951,11 @@
     "@webassemblyjs/ast" "1.11.1"
     "@xtuc/long" "4.2.2"
 
+"@webfunny/monitor@^1.0.8":
+  version "1.0.8"
+  resolved "http://ires.58corp.com/repository/58npm/@webfunny/monitor/-/monitor-1.0.8.tgz#0e21f0ce95e196abad31bd0377344d795d2eb908"
+  integrity sha512-LeyT9qPBtVk2yCgx8HH8v9ZxqwWF7TfoJS8kqBMJBzByrAG9l7JmQPIaSCTWIWXtpyhKU6icDOOfPJImhNLGeQ==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmmirror.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
