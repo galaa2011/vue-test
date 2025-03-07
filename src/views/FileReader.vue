@@ -1,7 +1,7 @@
 <template>
   <input class="file-reader" type="file" @change="handleChange" />
   <img :src="url" alt="本地图片" />
-  <embed :src="pdf" type="application/pdf" width="100%" height="100%" />
+  <embed :src="pdf" type="application/pdf" width="100%" height="500px" />
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";

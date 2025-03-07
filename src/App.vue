@@ -9,7 +9,8 @@
     <router-link to="/text">AutoText</router-link> |
     <router-link to="/file">FileReader</router-link> |
     <router-link to="/grid">GridView</router-link> |
-    <router-link to="/lcp">LCP</router-link>
+    <router-link to="/lcp">LCP</router-link> |
+    <router-link to="/io">IntersectionObserver</router-link>
   </nav>
   <router-view />
 </template>

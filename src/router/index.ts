@@ -62,6 +62,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "lcp",
     component: () => import(/* webpackChunkName: "lcp" */ "../views/LCP.vue"),
   },
+  {
+    path: "/io",
+    name: "io",
+    component: () =>
+      import(/* webpackChunkName: "io" */ "../views/IntersectionObserver.vue"),
+  },
 ];
 
 const router = createRouter({

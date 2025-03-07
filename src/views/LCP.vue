@@ -7,6 +7,8 @@
   </p>
 </template>
 <script lang="ts" setup>
+import { onMounted } from "vue";
+
 let lcp: PerformanceEntry | null = null;
 
 const observer = new PerformanceObserver((entries) => {
@@ -18,6 +20,14 @@ const observer = new PerformanceObserver((entries) => {
 });
 
 observer.observe({ type: "largest-contentful-paint", buffered: true });
+
+onMounted(() => {
+  setTimeout(() => {
+    if (lcp) {
+      console.log("LCP:", lcp);
+    }
+  }, 1000);
+});
 
 // 在页面加载完成时，可以输出 LCP 值
 window.addEventListener("load", () => {

@@ -18,9 +18,9 @@
   </div>
 </template>
 <script lang="ts">
-import { debounce } from "lodash-es";
+// import { debounce } from "lodash-es";
 
-window.addEventListener("scroll", debounce(console.log, 500));
+// window.addEventListener("scroll", debounce(console.log, 500));
 export default {};
 </script>
 <script lang="ts" setup>
@@ -39,6 +39,7 @@ import useTest from "@/hooks/useTest";
 import TestChart1 from "./TestChart.vue";
 
 const test = useTest();
+console.log(test);
 
 const TestChart2 = h("h1", ["TestChart2"]);
 const props = withDefaults(defineProps<{ msg: string }>(), {
