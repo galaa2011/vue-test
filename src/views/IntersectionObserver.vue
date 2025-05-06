@@ -40,6 +40,6 @@ onMounted(() => {
 <style scoped>
 .box {
   height: 500px;
-  width: 100vw;
+  width: 50vw;
 }
 </style>

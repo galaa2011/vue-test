@@ -14,10 +14,12 @@ onMounted(() => {
   console.log($lt.value);
   lt.value = lottie.loadAnimation({
     container: $lt.value,
-    renderer: "canvas",
+    // renderer: "canvas",
+    renderer: "svg",
     loop: true,
     autoplay: true,
     path: "https://wos2.58cdn.com.cn/iJkFeDcBiJiJ/rocket/_c-wNI_3E6.json",
+    // path: "https://rocketmgr012.58wos.com.cn/iJkFeDcBiJiJ/rocket/uCmqF2mDO1744341023971.json",
   });
   console.log(lt.value);
 

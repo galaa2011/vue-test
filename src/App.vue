@@ -10,7 +10,8 @@
     <router-link to="/file">FileReader</router-link> |
     <router-link to="/grid">GridView</router-link> |
     <router-link to="/lcp">LCP</router-link> |
-    <router-link to="/io">IntersectionObserver</router-link>
+    <router-link to="/io">IntersectionObserver</router-link> |
+    <router-link to="/dp">Design Pattern</router-link>
   </nav>
   <router-view />
 </template>

@@ -68,6 +68,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "io" */ "../views/IntersectionObserver.vue"),
   },
+  {
+    path: "/dp",
+    name: "dp",
+    component: () =>
+      import(/* webpackChunkName: "dp" */ "../views/DesignPattern.vue"),
+  },
 ];
 
 const router = createRouter({
