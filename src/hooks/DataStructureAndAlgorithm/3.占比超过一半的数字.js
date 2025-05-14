@@ -21,8 +21,25 @@ function solution(array) {
 
   // 方法二：排序法
 
-  // 方法三：摩尔投票法
-  return 1;
+  // 方法三：摩尔投票法：是一种在线性时间内找到出现次数超过一半的元素的方法
+  let element;
+  let count;
+  array.forEach((el, i) => {
+    if (i === 0) {
+      // 初始化
+      element = el;
+      count = 1;
+    } else {
+      element === el ? count++ : count--;
+      if (count === 0) {
+        // 替换当前element，重置count
+        element = el;
+        count = 1;
+      }
+    }
+  });
+
+  return element;
 }
 
 function main() {
